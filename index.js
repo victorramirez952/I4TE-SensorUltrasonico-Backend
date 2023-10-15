@@ -2,6 +2,7 @@ require('dotenv').config()
 // // To connect with your mongoDB database
 // const mongoose = require('mongoose');
 const MongoURI = process.env.MONGO_URI
+const port = process.env.PORT || 5000
 
 const mongoose = require('mongoose')
 
@@ -40,8 +41,7 @@ Distance.createIndexes();
 const express = require('express');
 const app = express();
 const cors = require("cors");
-const { Timestamp } = require('mongodb')
-console.log("App listen at port 5000");
+console.log(`App listen at port ${port}`);
 app.use(express.json());
 app.use(cors());
 app.get("/", (req, resp) => {
@@ -165,4 +165,4 @@ app.delete("/deleteAll", async (req, res) => {
 });
 
 
-app.listen(5000);
+app.listen(port);
